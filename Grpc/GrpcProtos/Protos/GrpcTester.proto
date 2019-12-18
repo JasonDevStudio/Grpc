@@ -1,0 +1,28 @@
+﻿syntax="proto3";
+
+option csharp_namespace = "GrpcProtos";
+ 
+package GrpcProtos;
+
+service GrpcTService{
+	rpc GetGrpcTester (HelloRequest) returns (stream TestEntity); 
+	rpc GetGrpcTestEntities (HelloRequest) returns (stream TestEntities); 
+	rpc GetGrpcTestStream (HelloRequest) returns (stream TestStream); 
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message TestEntity{
+	string context =1;
+	string hearder =2;
+}
+
+message TestEntities{
+	repeated TestEntity context =1; 
+}
+
+message TestStream{
+	bytes context =1; 
+}
